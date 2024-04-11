@@ -13,7 +13,7 @@ export function tablazatLetrehoz(lista) {
         </tr>`;
   });
   txt += "</tbody>";
-  txt = "</table></div>";
+  txt += "</table></div>";
   return txt;
 }
 

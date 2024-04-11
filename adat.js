@@ -2,22 +2,22 @@ export const emberekLISTA = [
   {
     nev: "Jenő",
     kor: 23,
-    nem: true,
+    nem: false,
   },
   {
     nev: "Juli",
     kor: 33,
-    nem: false,
+    nem: true,
   },
   {
     nev: "Géza",
     kor: 13,
-    nem: true,
+    nem: false,
   },
   {
     nev: "Béla",
     kor: 123,
-    nem: true,
+    nem: false,
   },
   {
     nev: "Luca",
@@ -27,6 +27,6 @@ export const emberekLISTA = [
   {
     nev: "Ludvig",
     kor: 63,
-    nem: true,
+    nem: false,
   },
 ];
