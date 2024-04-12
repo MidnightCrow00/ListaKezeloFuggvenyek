@@ -1,88 +1,75 @@
 import { emberekLISTA } from "./adat.js";
+import { rendez, szures } from "./adatKezelo.js";
 import { megjelenit, tablazatLetrehoz } from "./fuggvenyek.js";
 
-let txt = tablazatLetrehoz(emberekLISTA);
-megjelenit(txt);
+let rIrany = 1;
+init(emberekLISTA);
+szuresNevSzerint()
 
-
-
-/*
-function listaKiir() {
-  for (let index = 0; index < emberekLISTA.length; index++) {
-    const element = emberekLISTA[index];
-    console.log(element);
-    console.log(emberekLISTA[index]);
-  }
+function init(lista) {
+  let txt = tablazatLetrehoz(lista);
+  megjelenit(txt);
+  rendezesEsemeny();
 }
 
-listaKiir();
-
-const listaKiir2 = function () {
-  for (let index = 0; index < emberekLISTA.length; index++) {
-    const element = emberekLISTA[index];
-    console.log(element);
-    console.log(emberekLISTA[index]);
-  }
-};
-
-listaKiir2();
-
-function listaKiir3() {
-  forEach ciklus LISTA esetén alkalmazható 
-  emberekLISTA.forEach(function (ember, i) {
-    console.log(ember);
-  });
-
-  emberekLISTA.forEach((ember, i) => {
-    console.log(ember);
-  });
-}
-listaKiir3();
-
- A 30 évnél idősebbeket írjuk ki 
-function idosebb30() {
-  const oregebbMint30 = emberekLISTA.filter(function (ember) {
-    return ember.kor > 30;
-  });
-
-  console.log(oregebbMint30);
+function szuresNevSzerint() {
+  // akkor kell lefutni, ha szűrőmezőbe beírunk valamit
+const szuroElem = $("#sznev");
+szuroElem.on("keyup", function () {
+  let szoveg = szuroElem.val();
+  init(szures(emberekLISTA, szoveg));
+});
+// szorgalmi: egyébb mezők szerint:
+const szurokorElem = $("#szkor");
+szurokorElem.on("keyup", function () {
+  let szoveg = szurokorElem.val();
+  init(szures(emberekLISTA, szoveg));
+});
+const szuronemElem = $("#sznem");
+szuronemElem.on("keyup", function () {
+  let szoveg = szuronemElem.val();
+  init(szures(emberekLISTA, szoveg));
+});
 }
 
-idosebb30();
 
-Férfiak kilistázása 
-function ferfiak() {
-  const ferfiakLista = emberekLISTA.filter(function (ember) {
-    return ember.nem;
-  });
-  console.log(ferfiakLista);
-}
+function rendezesEsemeny() {
+  const nevMezoElem = $(".adatok  table th").eq(0);
+  nevMezoElem.on("click", function () {
+    const lista = rendez(emberekLISTA, "nev", rIrany);
+    console.log(lista);
 
-ferfiak();
- Férfiak 20 évnél idősebbek kilistázása 
-function ferfiak20evFelett() {
-  const ferfiakLista = emberekLISTA.filter(function (ember) {
-    return ember.kor > 20 && ember.nem;
-  });
-  console.log(ferfiakLista);
-}
-ferfiak20evFelett();
+    let txt = tablazatLetrehoz(lista);
+    megjelenit(txt);
+    rendezesEsemeny();
 
-Rendezük kor szerint növekvő sorrendbe 
-function rendez() {
-  emberekLISTA.sort(function (e1, e2) {
-    return e1.kor - e2.kor;
+    rIrany *= -1;
+    console.log(rIrany);
   });
-  console.log(emberekLISTA);
-}
-rendez();
 
- Keverjük össze, véletlenszerű sorrend 
-function veletlen() {
-  emberekLISTA.sort(function (e1, e2) {
-     véletlenszerűen kapjunk negatív, vagy pozitív számot 
-    return Math.random()-0.5;
+  // szorgalmi: tudjunk rendezni a többi mező szerint is:
+  const korMezoElem = $(".adatok  table th").eq(1);
+  korMezoElem.on("click", function () {
+    const lista = rendez(emberekLISTA, "kor", rIrany);
+    console.log(lista);
+
+    let txt = tablazatLetrehoz(lista);
+    megjelenit(txt);
+    rendezesEsemeny();
+
+    rIrany *= -1;
+    console.log(rIrany);
   });
-  console.log(emberekLISTA);
+  const nemMezoElem = $(".adatok  table th").eq(2);
+  nemMezoElem.on("click", function () {
+    const lista = rendez(emberekLISTA, "nem", rIrany);
+    console.log(lista);
+
+    let txt = tablazatLetrehoz(lista);
+    megjelenit(txt);
+    rendezesEsemeny();
+
+    rIrany *= -1;
+    console.log(rIrany);
+  });
 }
-veletlen();*/
