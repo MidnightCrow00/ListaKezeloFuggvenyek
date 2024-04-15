@@ -77,6 +77,7 @@ function rendez() {
 }
 rendez();
 
+
  Keverjük össze, véletlenszerű sorrend 
 function veletlen() {
   emberekLISTA.sort(function (e1, e2) {
