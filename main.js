@@ -71,5 +71,11 @@ function rendezesEsemeny() {
 
     rIrany *= -1;
     console.log(rIrany);
+
+ Keverjük össze, véletlenszerű sorrend 
+function veletlen() {
+  emberekLISTA.sort(function (e1, e2) {
+     véletlenszerűen kapjunk negatív, vagy pozitív számot 
+    return Math.random()-0.5;
   });
 }
