@@ -46,6 +46,7 @@ function rendezesEsemeny() {
     rIrany *= -1;
     console.log(rIrany);
   });
+}
 
   // szorgalmi: tudjunk rendezni a többi mező szerint is:
   const korMezoElem = $(".adatok  table th").eq(1);
@@ -71,7 +72,7 @@ function rendezesEsemeny() {
 
     rIrany *= -1;
     console.log(rIrany);
-
+  })
  //Keverjük össze, véletlenszerű sorrend 
 function veletlen() {
   emberekLISTA.sort(function (e1, e2) {
